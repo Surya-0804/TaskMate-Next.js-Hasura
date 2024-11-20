@@ -2,20 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+body {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Dark mode variables as default */
+    --background: 0 0% 3.9%; /* Background dark */
+    --foreground: 0 0% 98%; /* Text light */
+    --card: 0 0% 3.9%; /* Card dark */
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%; /* Primary text light */
+    --primary-foreground: 0 0% 9%; /* Primary text dark */
+    --secondary: 0 0% 14.9%; /* Secondary background */
+    --secondary-foreground: 0 0% 98%; /* Secondary text light */
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%; /* Border dark */
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --radius: 0.5rem; /* Border radius */
+  }
+
+  .dark {
+    /* Dark mode variables (you can remove this if dark mode is default) */
+    --background: 0 0% 3.9%; /* Background dark */
+    --foreground: 0 0% 98%; /* Text light */
+    --card: 0 0% 3.9%; /* Card dark */
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%; /* Primary text light */
+    --primary-foreground: 0 0% 9%; /* Primary text dark */
+    --secondary: 0 0% 14.9%; /* Secondary background */
+    --secondary-foreground: 0 0% 98%; /* Secondary text light */
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%; /* Border dark */
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
 }
