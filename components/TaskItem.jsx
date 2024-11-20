@@ -35,9 +35,6 @@ const UPDATE_TASK_STATUS = gql`
 `;
 
 export default function TaskItem({ task }) {
-  console.log(
-    task.status === "completed" ? "Task is completed" : "Task is pending"
-  );
   const [showDeleteModal, setShowDeleteModal] = useState(false); // State for delete alert dialog
   const [showEditModal, setShowEditModal] = useState(false); // State for edit modal
   const [deleteTask] = useMutation(DELETE_TASK, {
