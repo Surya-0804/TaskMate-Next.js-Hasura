@@ -15,7 +15,7 @@ const GET_TASKS = gql`
   }
 `;
 
-export default function TaskList() {
+export default function TaskList({ filter }) {
   const { data, loading, error } = useQuery(GET_TASKS);
 
   if (loading)
@@ -28,9 +28,15 @@ export default function TaskList() {
     );
   if (error) return <p>Error: {error.message}</p>;
 
+  // Filter tasks based on the selected filter
+  const filteredTasks = data.tasks.filter((task) => {
+    if (filter === "all") return true;
+    return task.status === filter;
+  });
+
   return (
     <ul>
-      {data.tasks.map((task) => (
+      {filteredTasks.map((task) => (
         <TaskItem key={task.id} task={task} />
       ))}
     </ul>

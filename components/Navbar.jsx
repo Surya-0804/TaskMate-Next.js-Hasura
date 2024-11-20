@@ -11,9 +11,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export default function Nav() {
+export default function Nav({ filter, setFilter }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [filter, setFilter] = useState("all");
 
   const handleToggleModal = () => {
     setIsModalOpen(!isModalOpen);
