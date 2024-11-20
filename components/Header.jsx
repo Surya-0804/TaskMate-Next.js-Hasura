@@ -5,7 +5,7 @@ export default function Header() {
     <header className="p-4 text-white">
       <div className="flex items-center justify-center space-x-4 ">
         {/* Logo */}
-        <Image width={40} height={40} src="/logo.png" alt="Logo" />
+        <Image width={55} height={55} src="/to-do.png" alt="Logo" />
 
         {/* Title */}
         <h1 className="text-2xl font-bold">TaskMate</h1>

@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# **To-Do Application**
 
-## Getting Started
+![To-Do App Preview](public/preview/Home.png)  
+_A modern and sleek task management application built with Next.js, Hasura, and ShadCN components._
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## **Overview**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This is a responsive to-do application designed to help users efficiently manage their tasks. Built with a modern tech stack, it offers the following features:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- Add tasks with a title, description, and due date.
+- Filter tasks by their status (All, Pending, Completed).
+- Aesthetic dark mode design for a smooth user experience.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## **Screenshots**
 
-To learn more about Next.js, take a look at the following resources:
+### **Add Task Modal**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![Add Task Modal](public/preview/AddTask.png)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### **Edit Task Modal**
 
-## Deploy on Vercel
+![Edit Task Modal](public/preview/EditTask.png)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### **Delete Task Modal**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+![Delete Task Modal](public/preview/DeleteTask.png)
+
+### **Task List with Pending Filters**
+
+![Task List with Pending Filters](public/preview/PendingFilter.png)
+
+### **Task List with Completed Filters**
+
+## ![Task List with Completed Filters](public/preview/CompletedFilter.png)
+
+## **Tech Stack**
+
+### **Frontend**
+
+- [Next.js](https://nextjs.org/)
+- [ShadCN UI](https://shadcn.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+
+### **Backend**
+
+- [Hasura GraphQL](https://hasura.io/)
+
+---
