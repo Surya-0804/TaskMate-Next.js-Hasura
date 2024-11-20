@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { gql, useMutation } from "@apollo/client";
-import { TrashIcon, PencilSquareIcon } from "@heroicons/react/20/solid";
+import {
+  TrashIcon,
+  PencilSquareIcon,
+  CheckCircleIcon,
+  ExclamationCircleIcon,
+} from "@heroicons/react/20/solid";
 import {
   AlertDialog,
   AlertDialogContent,
@@ -30,6 +35,9 @@ const UPDATE_TASK_STATUS = gql`
 `;
 
 export default function TaskItem({ task }) {
+  console.log(
+    task.status === "completed" ? "Task is completed" : "Task is pending"
+  );
   const [showDeleteModal, setShowDeleteModal] = useState(false); // State for delete alert dialog
   const [showEditModal, setShowEditModal] = useState(false); // State for edit modal
   const [deleteTask] = useMutation(DELETE_TASK, {
@@ -61,7 +69,7 @@ export default function TaskItem({ task }) {
     <>
       <li className="flex items-center justify-between p-4 border rounded my-2 w-full">
         {/* Radio Button */}
-        <input
+        {/* <input
           type="radio"
           checked={task.status === "completed"}
           onChange={toggleStatus}
@@ -71,8 +79,12 @@ export default function TaskItem({ task }) {
               ? "Task is completed"
               : "Task is pending"
           }
-        />
-
+        /> */}
+        {task.status === "completed" ? (
+          <CheckCircleIcon className="w-7 h-7 mr-5 text-green-500" />
+        ) : (
+          <ExclamationCircleIcon className="w-7 h-7 mr-5 text-yellow-400" />
+        )}
         {/* Task Title and Description */}
         <div className="flex-1 ml-4 truncate">
           <h3
