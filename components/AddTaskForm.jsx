@@ -13,13 +13,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import DatePicker from "react-datepicker"; // Import ShadCN-compatible date picker
+import "react-datepicker/dist/react-datepicker.css"; // Import default styles
 
 // Mutation for adding task
 const ADD_TASK = gql`
@@ -38,30 +33,29 @@ const ADD_TASK = gql`
 
 export default function AddTaskPopup({ isModalOpen, setIsModalOpen }) {
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState(""); // Capture description input
-  const [dueDate, setDueDate] = useState("");
+  const [description, setDescription] = useState("");
+  const [dueDate, setDueDate] = useState(null); // Use a Date object for ShadCN picker
   const [addTask, { loading, error }] = useMutation(ADD_TASK, {
     refetchQueries: ["GetTasks"],
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!title.trim()) return; // Ensure title is not empty
+    if (!title.trim()) return;
 
-    // Format the due date correctly
+    // Format the due date as a string
     const formattedDueDate = dueDate
-      ? new Date(dueDate).toISOString().split("T")[0]
+      ? dueDate.toISOString().split("T")[0]
       : null;
 
     try {
-      // Execute mutation to add task
       await addTask({
         variables: { title, description, due_date: formattedDueDate },
       });
-      setTitle(""); // Reset title input
-      setDescription(""); // Reset description input
-      setDueDate(""); // Reset due date
-      setIsModalOpen(false); // Close the modal after successful submission
+      setTitle("");
+      setDescription("");
+      setDueDate(null);
+      setIsModalOpen(false);
     } catch (err) {
       console.error("Error adding task:", err.message);
     }
@@ -69,7 +63,6 @@ export default function AddTaskPopup({ isModalOpen, setIsModalOpen }) {
 
   return (
     <>
-      {/* Popup Modal for Add Task */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <Card className="w-[350px] bg-black text-white">
@@ -113,19 +106,18 @@ export default function AddTaskPopup({ isModalOpen, setIsModalOpen }) {
                     <Label htmlFor="dueDate" className="text-white">
                       Due Date
                     </Label>
-                    <Input
-                      id="dueDate"
-                      type="date"
-                      value={dueDate}
-                      onChange={(e) => setDueDate(e.target.value)}
-                      className="bg-black text-white border-gray-600 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                    <DatePicker
+                      selected={dueDate}
+                      onChange={(date) => setDueDate(date)}
+                      placeholderText="Select due date"
+                      dateFormat="yyyy-MM-dd"
+                      className="w-full bg-black text-white border-gray-600 px-3 py-2 rounded focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                     />
                   </div>
                 </div>
               </form>
             </CardContent>
             <CardFooter className="flex justify-between">
-              {/* Cancel Button */}
               <Button
                 variant="outline"
                 onClick={() => setIsModalOpen(false)}
@@ -133,7 +125,6 @@ export default function AddTaskPopup({ isModalOpen, setIsModalOpen }) {
               >
                 Cancel
               </Button>
-              {/* Submit Button */}
               <Button onClick={handleSubmit} disabled={loading}>
                 {loading ? "Adding..." : "Add Task"}
               </Button>
