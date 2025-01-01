@@ -37,6 +37,7 @@ This is a responsive to-do application designed to help users efficiently manage
 
 ## ![Task List with Completed Filters](public/preview/CompletedFilter.png)
 
+<!--
 ## **Tech Stack**
 
 ### **Frontend**
@@ -50,3 +51,4 @@ This is a responsive to-do application designed to help users efficiently manage
 - [Hasura GraphQL](https://hasura.io/)
 
 ---
+-->
